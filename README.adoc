@@ -60,14 +60,14 @@ The latest release is 1.1.0.
 
 == Changelog
 === 1.1.0
-Upgrade Maven bundle plugin to 4.2.1
-Upgrade maven toolchains plugin to 3.0.0
-Upgrading JDK requires a minimum version of 1.8
-Upgrade ehcache to 3.8.1
-Upgrade Shiro core to 1.4.2
-Upgrade slf4j to 1.7.28
-Add version control plug-in Maven release plugin
-Add and publish to the SCM plug-in Maven SCM publish plugin
+* Upgrade Maven bundle plugin to 4.2.1
+* Upgrade maven toolchains plugin to 3.0.0
+* Upgrading JDK requires a minimum version of 1.8
+* Upgrade ehcache to 3.8.1
+* Upgrade Shiro core to 1.4.2
+* Upgrade slf4j to 1.7.28
+* Add version control plug-in Maven release plugin
+* Add and publish to the SCM plug-in Maven SCM publish plugin
 
 === 1.0.0
 
