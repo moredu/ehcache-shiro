@@ -1,13 +1,58 @@
-<toolchains>
+<toolchains  xmlns="http://maven.apache.org/TOOLCHAINS/1.1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://maven.apache.org/TOOLCHAINS/1.1.0 http://maven.apache.org/xsd/toolchains-1.1.0.xsd">
     <toolchain>
         <type>jdk</type>
         <provides>
-            <version>1.8</version>
+            <id>jdk_1_8</id>
             <vendor>openjdk</vendor>
-            <id>jdk-12.0.2</id>
+            <version>1.8</version>
         </provides>
         <configuration>
-            <jdkHome>D:/openjdk/jdk-12.0.2-win64-opensource</jdkHome>
+            <jdkHome>D:\openjdk\jdk-12.0.2-win64-opensource</jdkHome>
+        </configuration>
+    </toolchain>
+    <toolchain>
+        <type>jdk</type>
+        <provides>
+            <id>jdk_9</id>
+            <vendor>openjdk</vendor>
+            <version>9</version>
+        </provides>
+        <configuration>
+            <jdkHome>D:\openjdk\jdk-12.0.2-win64-opensource</jdkHome>
+        </configuration>
+    </toolchain>
+    <toolchain>
+        <type>jdk</type>
+        <provides>
+            <id>jdk_10</id>
+            <vendor>openjdk</vendor>
+            <version>10</version>
+        </provides>
+        <configuration>
+            <jdkHome>D:\openjdk\jdk-12.0.2-win64-opensource</jdkHome>
+        </configuration>
+    </toolchain>
+    <toolchain>
+        <type>jdk</type>
+        <provides>
+            <id>jdk_11</id>
+            <vendor>openjdk</vendor>
+            <version>11</version>
+        </provides>
+        <configuration>
+            <jdkHome>C:\Program Files\Java\jdk-11.0.2</jdkHome>
+        </configuration>
+    </toolchain>
+    <toolchain>
+        <type>jdk</type>
+        <provides>
+            <id>jdk_12</id>
+            <vendor>openjdk</vendor>
+            <version>12</version>
+        </provides>
+        <configuration>
+            <jdkHome>D:\openjdk\jdk-12.0.2-win64-opensource</jdkHome>
         </configuration>
     </toolchain>
 </toolchains>

@@ -17,11 +17,11 @@ limitations under the License.
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
-    <parent>
+   <!-- <parent>
         <groupId>org.sonatype.oss</groupId>
         <artifactId>oss-parent</artifactId>
         <version>9</version>
-    </parent>
+    </parent>-->
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.ehcache.integrations.shiro</groupId>
@@ -33,8 +33,15 @@ limitations under the License.
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <scm_developer>moredu</scm_developer>
     </properties>
-
+    <distributionManagement>
+        <site>
+            <id>shiro-ehcache3</id>
+            <url>scm:git:ssh://git@github.com/${scm_developer}/${project.artifactId}.git</url>
+        </site>
+    </distributionManagement>
     <build>
         <plugins>
             <plugin>
@@ -47,7 +54,7 @@ limitations under the License.
                         <Bundle-SymbolicName>org.apache.shiro.ehcache3</Bundle-SymbolicName>
                         <Export-Package>org.ehcache.integrations.shiro*;version=1.0.0</Export-Package>
                         <Import-Package>
-                            org.apache.shiro*;version="[1.1, 2)",
+                            org.apache.shiro*;version="[1.2, 2)",
                             org.ehcache*,
                             *
                         </Import-Package>
@@ -55,19 +62,67 @@ limitations under the License.
                 </configuration>
             </plugin>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>3.0.0-M1</version>
+                <configuration>
+                    <dryRun>true</dryRun>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
+                    <tagNameFormat>v@{project.version}</tagNameFormat>
+                    <localRepoDirectory>${project.basedir}/../releases/${project.artifactId}/</localRepoDirectory>
+                    <preparationGoals>clean package</preparationGoals>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+
+                    <archive>
+                        <index>true</index>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                        </manifest>
+                        <manifestEntries>
+                            <!--<mode>development</mode>-->
+                            <Built-By>${scm_developer}</Built-By>
+                            <Bundle-Version>${project.version}</Bundle-Version>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-scm-publish-plugin</artifactId>
+                <version>3.0.0</version>
+                <configuration>
+                    <dryRun>true</dryRun>
+                    <scmBranch>gh-pages</scmBranch>
+                    <tryUpdate>true</tryUpdate>
+                    <checkoutDirectory>${project.basedir}/../scmpublish/${project.artifactId}/</checkoutDirectory>
+                    <!--<checkinComment>${project.name}</checkinComment>-->
+                    <content>${project.build.directory}/${project.artifactId}/${project.version}.jar</content>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-toolchains-plugin</artifactId>
-                <version>1.1</version>
-                <executions>
+                <version>3.0.0</version>
+                <!--<executions>
                     <execution>
                         <goals>
                             <goal>toolchain</goal>
                         </goals>
                     </execution>
-                </executions>
+                </executions>-->
                 <configuration>
                     <toolchains>
+                        <toolchain-type>
+                            <param>${java.version}</param>
+                        </toolchain-type>
                         <jdk>
-                            <version>1.6</version>
+                            <version>1.8</version>
                         </jdk>
                     </toolchains>
                 </configuration>
@@ -79,19 +134,19 @@ limitations under the License.
         <dependency>
             <groupId>org.ehcache</groupId>
             <artifactId>ehcache</artifactId>
-            <version>3.1.3</version>
+            <version>3.8.1</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>1.7.7</version>
+            <version>1.7.28</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-core</artifactId>
-            <version>1.1.0</version>
+            <version>1.4.2</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -103,7 +158,7 @@ limitations under the License.
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
-            <version>1.7.7</version>
+            <version>1.7.28</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

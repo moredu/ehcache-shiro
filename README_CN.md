@@ -36,13 +36,15 @@ Please have a look at the default configuration file before creating your own.
 <dependency>
   <groupId>org.ehcache.integrations.shiro</groupId>
   <artifactId>shiro-ehcache3</artifactId>
-  <version>1.0.0</version>
+  <version>1.1.0</version>
+  <scope>system</scope>
+  <systemPath>${project.basedir}/lib/shiro-ehcache3-1.1.0.jar</systemPath>
 </dependency>
 ```
 
 = Shiro Support
 
-This project works with Shiro `1.1.0` and above and requires Ehcache `3.1.3` and above.
+This project works with Shiro `1.2.0` and above and requires Ehcache `3.1.3` and above.
 
 = Resources
 
@@ -60,14 +62,14 @@ The latest release is 1.1.0.
 
 == Changelog
 === 1.1.0
-Upgrade Maven bundle plugin to 4.2.1
-Upgrade maven toolchains plugin to 3.0.0
-Upgrading JDK requires a minimum version of 1.8
-Upgrade ehcache to 3.8.1
-Upgrade Shiro core to 1.4.2
-Upgrade slf4j to 1.7.28
-Add version control plug-in Maven release plugin
-Add and publish to the SCM plug-in Maven SCM publish plugin
+* 升级maven-bundle-plugin版本到4.2.1
+* 升级maven-toolchains-plugin版本到3.0.0
+* 升级jdk要求版本最低到1.8
+* 升级ehcache版本到3.8.1
+* 升级shiro-core版本到1.4.2
+* 升级slf4j版本到1.7.28
+* 增加版本控制插件maven-release-plugin
+* 增加发布到SCM插件maven-scm-publish-plugin
 
 === 1.0.0
 
